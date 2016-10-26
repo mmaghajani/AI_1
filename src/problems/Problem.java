@@ -1,9 +1,6 @@
 package problems;
 
-import algorithms.Node;
-
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * Created by mma on 10/26/16.
@@ -15,7 +12,7 @@ public abstract class Problem {
 
     public abstract boolean isGoal(Node node);
 
-    public abstract int getCost(Map<Node, Node> step);
+    public abstract int getCost(Node src, Node dest);
 
     public abstract int heuristicFunction(Node node);
 }

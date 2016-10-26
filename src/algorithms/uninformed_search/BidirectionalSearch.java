@@ -1,7 +1,7 @@
 package algorithms.uninformed_search;
 
 import algorithms.Algorithm;
-import algorithms.Node;
+import problems.Node;
 import problems.Problem;
 
 /**

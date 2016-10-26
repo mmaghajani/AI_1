@@ -1,9 +1,6 @@
 package problems;
 
-import algorithms.Node;
-
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * Created by mma on 10/26/16.
@@ -25,7 +22,7 @@ public class Robot extends Problem {
     }
 
     @Override
-    public int getCost(Map<Node, Node> step) {
+    public int getCost(Node src, Node dest) {
         return 0;
     }
 

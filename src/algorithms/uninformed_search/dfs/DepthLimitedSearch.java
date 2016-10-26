@@ -1,6 +1,6 @@
 package algorithms.uninformed_search.dfs;
 
-import algorithms.Node;
+import problems.Node;
 import problems.Problem;
 
 /**

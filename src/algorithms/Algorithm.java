@@ -1,6 +1,7 @@
 package algorithms;
 
 
+import problems.Node;
 import problems.Problem;
 
 import java.util.ArrayList;
