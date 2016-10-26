@@ -38,8 +38,8 @@ public class ProblemSolvingAgent {
         this.searchAlgorithm = searchAlgorithm;
     }
 
-    public void solve(){
-        searchAlgorithm.apply();
+    public void solve(boolean isGraphy){
+        searchAlgorithm.apply(problem , isGraphy);
     }
 
 }

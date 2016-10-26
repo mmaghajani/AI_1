@@ -10,10 +10,13 @@ import java.util.ArrayList;
  */
 public class Robot extends Problem {
     private int height, width;
+    private ArrayList<Integer> horizontalWall, verticalWall;
 
-    public Robot(int height, int width) {
+    public Robot(int height, int width, ArrayList<Integer> horizontalWall, ArrayList<Integer> verticalWall) {
         this.height = height;
         this.width = width;
+        this.horizontalWall = horizontalWall;
+        this.verticalWall = verticalWall;
     }
 
     @Override
@@ -25,23 +28,59 @@ public class Robot extends Problem {
     @Override
     public ArrayList<Node> nextState(Node node) {
         ArrayList<Node> neighbours = new ArrayList<>();
-        if (((RobotNode) node).getState() - width >= 0) {
+        if (((RobotNode) node).getState() - width >= 0 && notTopWall(node)) {
             RobotNode neighbour = new RobotNode(((RobotNode) node).getState() - width);
             neighbours.add(neighbour);
         }
-        if (((RobotNode) node).getState() + width < width * height) {
+        if (((RobotNode) node).getState() + width < width * height && notBottomWall(node)) {
             RobotNode neighbour = new RobotNode(((RobotNode) node).getState() + width);
             neighbours.add(neighbour);
         }
-        if (((RobotNode) node).getState() % width != 0) {
+        if (((RobotNode) node).getState() % width != 0 && notLeftWall(node)) {
             RobotNode neighbour = new RobotNode(((RobotNode) node).getState() - 1);
             neighbours.add(neighbour);
         }
-        if (((RobotNode) node).getState() % width != width - 1) {
+        if (((RobotNode) node).getState() % width != width - 1 && notRightWall(node)) {
             RobotNode neighbour = new RobotNode(((RobotNode) node).getState() + 1);
             neighbours.add(neighbour);
         }
         return neighbours;
+    }
+
+    private boolean notBottomWall(Node node) {
+        int x = ((RobotNode) node).getState();
+        int row = x / width;
+        int column = x % width;
+        int wallNumber = row * (width) + column + width;
+        if (horizontalWall.contains(wallNumber)) return false;
+        else return true;
+    }
+
+    private boolean notTopWall(Node node) {
+        int x = ((RobotNode) node).getState();
+        int row = x / width;
+        int column = x % width;
+        int wallNumber = row * (width) + column;
+        if (horizontalWall.contains(wallNumber)) return false;
+        else return true;
+    }
+
+    private boolean notRightWall(Node node) {
+        int x = ((RobotNode) node).getState();
+        int row = x / width;
+        int column = x % width;
+        int wallNumber = row * (width + 1) + column + 1;
+        if (verticalWall.contains(wallNumber)) return false;
+        else return true;
+    }
+
+    private boolean notLeftWall(Node node) {
+        int x = ((RobotNode) node).getState();
+        int row = x / width;
+        int column = x % width;
+        int wallNumber = row * (width + 1) + column;
+        if (verticalWall.contains(wallNumber)) return false;
+        else return true;
     }
 
     @Override
@@ -57,8 +96,8 @@ public class Robot extends Problem {
     @Override
     public double heuristicFunction(Node node) {
         int a = width - (((RobotNode) node).getState() % width);
-        int b = height - (((RobotNode) node).getState() / width) ;
-        double z = Math.sqrt(a*a + b*b) ;
+        int b = height - (((RobotNode) node).getState() / width);
+        double z = Math.sqrt(a * a + b * b);
         return z;
     }
 
@@ -69,6 +108,6 @@ public class Robot extends Problem {
 
     @Override
     public Node getGoalState() {
-        return new RobotNode(width*height-1);
+        return new RobotNode(width * height - 1);
     }
 }
