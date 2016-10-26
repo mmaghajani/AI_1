@@ -16,15 +16,15 @@ public abstract class Problem {
 
     public abstract int getCost(Node src, Node dest);
 
-    public abstract int heuristicFunction(Node node);
+    public abstract double heuristicFunction(Node node);
 
     public abstract Node getGoalState();
 
-    public int getPathCost(Node node){
+    public double getPathCost(Node node){
         return node.getAccessibilityCost() ;
     }
 
-    public int evaluateFunction(Node node){
+    public double evaluateFunction(Node node){
         return heuristicFunction(node) + getPathCost(node) ;
     }
 }

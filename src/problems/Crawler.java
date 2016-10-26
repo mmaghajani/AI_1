@@ -29,12 +29,12 @@ public class Crawler extends Problem {
     }
 
     @Override
-    public int heuristicFunction(Node node) {
+    public double heuristicFunction(Node node) {
         return 0;
     }
 
     @Override
-    public int getPathCost(Node node) {
+    public double getPathCost(Node node) {
         return 0;
     }
 

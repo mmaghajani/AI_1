@@ -15,7 +15,7 @@ public class UniformCostSearch extends Algorithm {
         if (isGraphy) {
             f = new ArrayList<>();
             e = new ArrayList<>();
-
+            f.add(problem.getInitialState());
             while (!f.isEmpty()) {
                 Node node = getMinimumCost();
                 if (problem.isGoal(node)) return node;
@@ -36,7 +36,7 @@ public class UniformCostSearch extends Algorithm {
             }
         } else {
             f = new ArrayList<>();
-
+            f.add(problem.getInitialState());
             while (!f.isEmpty()) {
                 Node node = getMinimumCost();
                 if (problem.isGoal(node)) return node;
