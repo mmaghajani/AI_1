@@ -30,4 +30,14 @@ public class Robot extends Problem {
     public int heuristicFunction(Node node) {
         return 0;
     }
+
+    @Override
+    public int getPathCost(Node node) {
+        return 0;
+    }
+
+    @Override
+    public Node getGoalState() {
+        return null;
+    }
 }
