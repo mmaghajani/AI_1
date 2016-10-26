@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public abstract class Algorithm {
     protected ArrayList<Node> f ;
     protected ArrayList<Node> e ;
-    protected Problem problem ;
 
-    public abstract void apply() ;
+    public abstract void apply(Problem problem , boolean isGraphy) ;
 }

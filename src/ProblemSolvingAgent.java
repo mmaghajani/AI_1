@@ -4,15 +4,15 @@ import problems.Problem;
 /**
  * Created by mma on 10/26/16.
  */
-public class Agent {
+public class ProblemSolvingAgent {
     private Problem problem;
     private Algorithm searchAlgorithm;
 
-    public Agent() {
+    public ProblemSolvingAgent() {
 
     }
 
-    public Agent(Problem problem, Algorithm searchAlgorithm) {
+    public ProblemSolvingAgent(Problem problem, Algorithm searchAlgorithm) {
         this.problem = problem;
         this.searchAlgorithm = searchAlgorithm;
     }
@@ -39,7 +39,7 @@ public class Agent {
     }
 
     public void solve(){
-
+        searchAlgorithm.apply();
     }
 
 }
