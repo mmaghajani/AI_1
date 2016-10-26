@@ -1,4 +1,4 @@
-package algorithms.dfs;
+package algorithms.uninformed_search.dfs;
 
 import algorithms.Algorithm;
 
