@@ -5,7 +5,7 @@ package problems;
  */
 public class Node {
     private int accessibilityCost ;
-
+    private int depth = 0 ;
 
     public Node(){
 
@@ -17,5 +17,13 @@ public class Node {
 
     public void setAccessibilityCost(int accessibilityCost) {
         this.accessibilityCost = accessibilityCost;
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 }
