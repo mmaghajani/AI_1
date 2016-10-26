@@ -12,5 +12,5 @@ public abstract class Algorithm {
     protected ArrayList<Node> f ;
     protected ArrayList<Node> e ;
 
-    public abstract void apply(Problem problem , boolean isGraphy) ;
+    public abstract Node apply(Problem problem , boolean isGraphy) ;
 }
