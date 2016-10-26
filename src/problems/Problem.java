@@ -15,4 +15,6 @@ public abstract class Problem {
     public abstract int getCost(Node src, Node dest);
 
     public abstract int heuristicFunction(Node node);
+
+    public abstract Node getGoalState();
 }
