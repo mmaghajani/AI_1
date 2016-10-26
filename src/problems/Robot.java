@@ -1,11 +1,14 @@
 package problems;
 
+import data_structures.Node;
+
 import java.util.ArrayList;
 
 /**
  * Created by mma on 10/26/16.
  */
 public class Robot extends Problem {
+    private int[] queensState = new int[8] ;
     @Override
     public Node getInitialState() {
         return null;

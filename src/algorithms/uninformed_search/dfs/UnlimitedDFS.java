@@ -1,6 +1,6 @@
 package algorithms.uninformed_search.dfs;
 
-import problems.Node;
+import data_structures.Node;
 import problems.Problem;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package algorithms.uninformed_search;
 
 import algorithms.Algorithm;
-import problems.Node;
+import data_structures.Node;
 import problems.Problem;
 
 import java.util.ArrayList;

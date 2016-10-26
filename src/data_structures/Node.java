@@ -1,11 +1,11 @@
-package problems;
+package data_structures;
 
 /**
  * Created by mma on 10/26/16.
  */
 public class Node {
-    private int accessibilityCost ;
-    private int depth = 0 ;
+    protected int accessibilityCost ;
+    protected int depth = 0 ;
 
     public Node(){
 

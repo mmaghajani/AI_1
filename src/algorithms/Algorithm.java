@@ -1,7 +1,7 @@
 package algorithms;
 
 
-import problems.Node;
+import data_structures.Node;
 import problems.Problem;
 
 import java.util.ArrayList;
