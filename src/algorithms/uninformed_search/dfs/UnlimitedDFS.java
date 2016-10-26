@@ -9,6 +9,6 @@ import problems.Problem;
 public class UnlimitedDFS extends DFS{
     @Override
     public Node apply(Problem problem , boolean isGraphy) {
-
+        return null;
     }
 }

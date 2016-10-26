@@ -8,7 +8,7 @@ import problems.Problem;
  */
 public class IterativeDeepeningDFS extends DFS {
     @Override
-    public Node apply(Problem problem , boolean isGraphy) {
-
+    public Node apply(Problem problem, boolean isGraphy) {
+        return null;
     }
 }
