@@ -27,4 +27,12 @@ public class Node {
     public void setDepth(int depth) {
         this.depth = depth;
     }
+
+    public void setParent(Node parent){
+        this.parent = parent ;
+    }
+
+    public Node getParent(){
+        return parent ;
+    }
 }
