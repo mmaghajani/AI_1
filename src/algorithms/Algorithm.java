@@ -26,7 +26,7 @@ public abstract class Algorithm {
         this.numOfExpandedNode = number;
     }
 
-    public void insreasNumOfVisitedNode() {
+    public void increaseNumOfVisitedNode() {
         this.numOfVisitedNode++;
     }
 

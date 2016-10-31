@@ -21,10 +21,12 @@ public class UnlimitedDFS extends DFS {
 
             while (!f.isEmpty()) {
                 Node node = f.remove(0);
+                increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(node)) {
                     if (problem.isGoal(child)) return child;
                     if (!e.contains(child) && !f.contains(child) && !child.equals(node)) {
                         child.setParent(node);
+                        increaseNumOfVisitedNode();
                         f.add(0, child);
                     }
                 }
@@ -43,6 +45,7 @@ public class UnlimitedDFS extends DFS {
                     if (problem.isGoal(child)) return child;
                     if (!child.equals(node)) {
                         child.setParent(node);
+                        increaseNumOfVisitedNode();
                         f.add(0, child);
                     }
                 }

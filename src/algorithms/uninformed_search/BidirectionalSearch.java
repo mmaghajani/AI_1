@@ -27,22 +27,26 @@ public class BidirectionalSearch extends Algorithm {
 
             while (!f.isEmpty() && !f_goal.isEmpty()) {
                 Node nodeInStartScope = f.remove(0);
+                increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(nodeInStartScope)) {
                     //if (problem.isGoal(child)) return child;
                     if (f_goal.contains(child) || e_goal.contains(child)) return child;
                     if (!e.contains(child) && !f.contains(child) && !child.equals(nodeInStartScope)) {
                         child.setParent(nodeInStartScope);
+                        increaseNumOfVisitedNode();
                         f.add(child);
                     }
                 }
                 e.add(nodeInStartScope);
 
                 Node nodeInGoalScope = f_goal.remove(0);
+                increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(nodeInGoalScope)) {
                     //if (problem.isGoal(child)) return child;
                     if (f.contains(child) || e.contains(child)) return child;
                     if (!e_goal.contains(child) && !f_goal.contains(child) && !child.equals(nodeInGoalScope)) {
                         child.setParent(nodeInGoalScope);
+                        increaseNumOfVisitedNode();
                         f_goal.add(child);
                     }
                 }
@@ -59,11 +63,13 @@ public class BidirectionalSearch extends Algorithm {
 
             while (!f.isEmpty() && !f_goal.isEmpty()) {
                 Node nodeInStartScope = f.remove(0);
+                increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(nodeInStartScope)) {
                     //if (problem.isGoal(child)) return child;
                     if (f_goal.contains(child)) return child;
                     if (!child.equals(nodeInStartScope)) {
                         child.setParent(nodeInStartScope);
+                        increaseNumOfVisitedNode();
                         f.add(child);
                     }
                 }
@@ -73,6 +79,7 @@ public class BidirectionalSearch extends Algorithm {
                     if (f.contains(child)) return child;
                     if (!child.equals(nodeInGoalScope)) {
                         child.setParent(nodeInGoalScope);
+                        increaseNumOfVisitedNode();
                         f_goal.add(child);
                     }
                 }
