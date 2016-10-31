@@ -75,12 +75,34 @@ public class Queens extends Problem {
 
     @Override
     public double heuristicFunction(Node node) {
-        return 0;
+        int counter = 0 ;
+        int[] state = ((QueensNode) node).getState();
+        int[] mark = new int[8];
+        for (int i = 0; i < 8; i++)
+            mark[i] = 0;
+        for (int i = 0; i < 8; i++) {
+            if (mark[state[i]] != 0)
+                counter++ ;
+            else
+                mark[state[i]] = 1;
+        }
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = i + 1; j < 8; j++) {
+                if (state[j] == state[i] - (j - i) || state[j] == state[i] + (j - i))
+                    counter++ ;
+            }
+            for (int j = i - 1; j >= 0; j--) {
+                if (state[j] == state[i] - (i - j) || state[j] == state[i] + (i - j))
+                    counter++ ;
+            }
+        }
+        return counter;
     }
 
     @Override
     public double getPathCost(Node node) {
-        return 0;
+        return node.getAccessibilityCost();
     }
 
     @Override

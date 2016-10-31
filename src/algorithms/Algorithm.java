@@ -12,6 +12,9 @@ import java.util.ArrayList;
 public abstract class Algorithm {
     protected ArrayList<Node> f ;
     protected ArrayList<Node> e ;
+    protected int numOfExpandedNode = 0 ;
+    protected int numOfVisitedNode = 0 ;
+    protected int maxUsedMemory = 0 ;
 
     public abstract Node apply(Problem problem , boolean isGraphy) ;
 }
