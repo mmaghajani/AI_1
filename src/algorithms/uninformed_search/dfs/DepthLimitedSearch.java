@@ -11,6 +11,10 @@ import java.util.ArrayList;
 public class DepthLimitedSearch extends DFS {
     private int limit = Integer.MAX_VALUE;
 
+    public DepthLimitedSearch(int limit){
+        this.limit = limit ;
+    }
+
     @Override
     public Node apply(Problem problem, boolean isGraphy) {
         if (isGraphy) {

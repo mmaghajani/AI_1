@@ -1,7 +1,10 @@
 import algorithms.informed_search.AStar;
+import algorithms.uninformed_search.BFS;
 import algorithms.uninformed_search.BidirectionalSearch;
 import algorithms.uninformed_search.UniformCostSearch;
+import algorithms.uninformed_search.dfs.DepthLimitedSearch;
 import algorithms.uninformed_search.dfs.UnlimitedDFS;
+import problems.Queens;
 import problems.Robot;
 
 import java.util.ArrayList;
@@ -13,18 +16,28 @@ import java.util.Collection;
 public class Main {
     public static void main(String[] args) {
         ProblemSolvingAgent agent = new ProblemSolvingAgent();
-        configRobotProblem(agent) ;
+        configRobotProblem(agent);
+        configQueensProblem(agent);
+    }
 
+    private static void configQueensProblem(ProblemSolvingAgent agent) {
+        Queens queensProblem = new Queens();
+        agent.configure(queensProblem, new BFS());
+        agent.solve(false);
+        agent.configure(queensProblem, new DepthLimitedSearch(8));
+        agent.solve(true);
+        agent.configure(queensProblem, new AStar());
+        agent.solve(true);
     }
 
     private static void configRobotProblem(ProblemSolvingAgent agent) {
-        ArrayList<Integer> horizontalWall = new ArrayList<>() ;
+        ArrayList<Integer> horizontalWall = new ArrayList<>();
         horizontalWall.add(16);
         horizontalWall.add(17);
-        ArrayList<Integer> verticalWall = new ArrayList<>() ;
+        ArrayList<Integer> verticalWall = new ArrayList<>();
         horizontalWall.add(9);
         horizontalWall.add(15);
-        Robot robotProblem = new Robot(5 , 5 , horizontalWall , verticalWall) ;
+        Robot robotProblem = new Robot(5, 5, horizontalWall, verticalWall);
         agent.configure(robotProblem, new UniformCostSearch());
         agent.solve(true);
         agent.configure(robotProblem, new UnlimitedDFS());
