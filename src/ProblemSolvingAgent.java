@@ -1,4 +1,5 @@
 import algorithms.Algorithm;
+import data_structures.Node;
 import problems.Problem;
 
 /**
@@ -38,8 +39,8 @@ public class ProblemSolvingAgent {
         this.searchAlgorithm = searchAlgorithm;
     }
 
-    public void solve(boolean isGraphy){
-        searchAlgorithm.apply(problem , isGraphy);
+    public Node solve(boolean isGraphy){
+        return searchAlgorithm.apply(problem , isGraphy);
     }
 
 }

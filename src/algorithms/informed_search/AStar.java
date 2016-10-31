@@ -65,8 +65,7 @@ public class AStar extends Algorithm {
     }
 
     private Node getMinimumCost(Problem problem) {
-        Node min = new Node();
-        min.setAccessibilityCost(Integer.MAX_VALUE);
+        Node min = null ;
         for (Node node : f) {
             if (problem.evaluateFunction(node) < problem.evaluateFunction(min))
                 min = node;

@@ -17,7 +17,7 @@ public class UniformCostSearch extends Algorithm {
             e = new ArrayList<>();
             f.add(problem.getInitialState());
             while (!f.isEmpty()) {
-                Node node = getMinimumCost();
+                Node node = getMinimumCost(problem);
                 if (problem.isGoal(node)) return node;
 
                 for (Node child : problem.nextState(node)) {
@@ -28,8 +28,8 @@ public class UniformCostSearch extends Algorithm {
                     }
                     //updating node
                     if (f.contains(child)) {
-                        int newCost = node.getAccessibilityCost() + problem.getCost(node, child) ;
-                        if( newCost < f.get(f.indexOf(child)).getAccessibilityCost())
+                        int newCost = node.getAccessibilityCost() + problem.getCost(node, child);
+                        if (newCost < f.get(f.indexOf(child)).getAccessibilityCost())
                             f.get(f.indexOf(child)).setAccessibilityCost(newCost);
                     }
                 }
@@ -39,19 +39,19 @@ public class UniformCostSearch extends Algorithm {
             f = new ArrayList<>();
             f.add(problem.getInitialState());
             while (!f.isEmpty()) {
-                Node node = getMinimumCost();
+                Node node = getMinimumCost(problem);
                 if (problem.isGoal(node)) return node;
 
                 for (Node child : problem.nextState(node)) {
-                    if ( !f.contains(child) && !child.equals(node)) {
+                    if (!f.contains(child) && !child.equals(node)) {
                         child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
                         child.setParent(node);
                         f.add(child);
                     }
                     //updating node
                     if (f.contains(child)) {
-                        int newCost = node.getAccessibilityCost() + problem.getCost(node, child) ;
-                        if( newCost < f.get(f.indexOf(child)).getAccessibilityCost())
+                        int newCost = node.getAccessibilityCost() + problem.getCost(node, child);
+                        if (newCost < f.get(f.indexOf(child)).getAccessibilityCost())
                             f.get(f.indexOf(child)).setAccessibilityCost(newCost);
                     }
                 }
@@ -60,11 +60,10 @@ public class UniformCostSearch extends Algorithm {
         return null;
     }
 
-    private Node getMinimumCost() {
-        Node min = new Node();
-        min.setAccessibilityCost(Integer.MAX_VALUE);
+    private Node getMinimumCost(Problem problem) {
+        Node min = null;
         for (Node node : f) {
-            if (node.getAccessibilityCost() < min.getAccessibilityCost())
+            if (problem.getPathCost(node) < problem.getPathCost(min))
                 min = node;
         }
         return min;

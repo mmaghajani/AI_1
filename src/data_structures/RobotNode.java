@@ -10,7 +10,7 @@ public class RobotNode extends Node {
         this.state = state ;
     }
 
-    public int getState() {
+    public Object getState() {
         return state;
     }
 

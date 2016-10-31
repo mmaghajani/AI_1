@@ -17,17 +17,17 @@ public class Main {
     public static void main(String[] args) {
         ProblemSolvingAgent agent = new ProblemSolvingAgent();
         configRobotProblem(agent);
-        configQueensProblem(agent);
+        //configQueensProblem(agent);
     }
 
     private static void configQueensProblem(ProblemSolvingAgent agent) {
         Queens queensProblem = new Queens();
         agent.configure(queensProblem, new BFS());
-        agent.solve(false);
+        ResponseFormatter.getInstance().format(agent, agent.solve(false));
         agent.configure(queensProblem, new DepthLimitedSearch(8));
-        agent.solve(true);
+        ResponseFormatter.getInstance().format(agent, agent.solve(true));
         agent.configure(queensProblem, new AStar());
-        agent.solve(true);
+        ResponseFormatter.getInstance().format(agent, agent.solve(true));
     }
 
     private static void configRobotProblem(ProblemSolvingAgent agent) {
@@ -39,12 +39,12 @@ public class Main {
         horizontalWall.add(15);
         Robot robotProblem = new Robot(5, 5, horizontalWall, verticalWall);
         agent.configure(robotProblem, new UniformCostSearch());
-        agent.solve(true);
+        ResponseFormatter.getInstance().format(agent, agent.solve(true));
         agent.configure(robotProblem, new UnlimitedDFS());
-        agent.solve(true);
+        ResponseFormatter.getInstance().format(agent, agent.solve(true));
         agent.configure(robotProblem, new BidirectionalSearch());
-        agent.solve(true);
+        ResponseFormatter.getInstance().format(agent, agent.solve(true));
         agent.configure(robotProblem, new AStar());
-        agent.solve(true);
+        ResponseFormatter.getInstance().format(agent, agent.solve(true));
     }
 }

@@ -3,7 +3,7 @@ package data_structures;
 /**
  * Created by mma on 10/26/16.
  */
-public class Node {
+public abstract class Node {
     protected int accessibilityCost ;
     protected int depth = 0 ;
     protected Node parent = null ;
@@ -35,4 +35,6 @@ public class Node {
     public Node getParent(){
         return parent ;
     }
+
+    public abstract Object getState() ;
 }

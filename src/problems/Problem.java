@@ -21,10 +21,12 @@ public abstract class Problem {
     public abstract Node getGoalState();
 
     public double getPathCost(Node node){
+        if(node == null )   return Double.MAX_VALUE ;
         return node.getAccessibilityCost() ;
     }
 
     public double evaluateFunction(Node node){
+        if( node == null )  return Double.MAX_VALUE ;
         return heuristicFunction(node) + getPathCost(node) ;
     }
 }

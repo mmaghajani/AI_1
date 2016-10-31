@@ -101,11 +101,6 @@ public class Queens extends Problem {
     }
 
     @Override
-    public double getPathCost(Node node) {
-        return node.getAccessibilityCost();
-    }
-
-    @Override
     public Node getGoalState() {
         return null;
     }
