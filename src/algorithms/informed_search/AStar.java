@@ -30,8 +30,8 @@ public class AStar extends Algorithm {
                     }
                     //updating node
                     if (f.contains(child)) {
-                        int newCost = node.getAccessibilityCost() + problem.getCost(node, child) ;
-                        if( newCost < f.get(f.indexOf(child)).getAccessibilityCost())
+                        int newCost = node.getAccessibilityCost() + problem.getCost(node, child);
+                        if (newCost < f.get(f.indexOf(child)).getAccessibilityCost())
                             f.get(f.indexOf(child)).setAccessibilityCost(newCost);
                     }
                 }
@@ -46,7 +46,7 @@ public class AStar extends Algorithm {
                 if (problem.isGoal(node)) return node;
 
                 for (Node child : problem.nextState(node)) {
-                    if ( !f.contains(child) && !child.equals(node)) {
+                    if (!f.contains(child) && !child.equals(node)) {
                         child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
                         child.setParent(node);
                         increaseNumOfVisitedNode();
@@ -54,8 +54,8 @@ public class AStar extends Algorithm {
                     }
                     //updating node
                     if (f.contains(child)) {
-                        int newCost = node.getAccessibilityCost() + problem.getCost(node, child) ;
-                        if( newCost < f.get(f.indexOf(child)).getAccessibilityCost())
+                        int newCost = node.getAccessibilityCost() + problem.getCost(node, child);
+                        if (newCost < f.get(f.indexOf(child)).getAccessibilityCost())
                             f.get(f.indexOf(child)).setAccessibilityCost(newCost);
                     }
                 }
@@ -65,11 +65,12 @@ public class AStar extends Algorithm {
     }
 
     private Node getMinimumCost(Problem problem) {
-        Node min = null ;
+        Node min = null;
         for (Node node : f) {
             if (problem.evaluateFunction(node) < problem.evaluateFunction(min))
                 min = node;
         }
+        f.remove(min);
         return min;
     }
 }

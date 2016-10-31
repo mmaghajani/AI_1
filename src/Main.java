@@ -40,11 +40,11 @@ public class Main {
         Robot robotProblem = new Robot(5, 5, horizontalWall, verticalWall);
         agent.configure(robotProblem, new UniformCostSearch());
         ResponseFormatter.getInstance().format(agent, agent.solve(true));
-        agent.configure(robotProblem, new UnlimitedDFS());
-        ResponseFormatter.getInstance().format(agent, agent.solve(true));
-        agent.configure(robotProblem, new BidirectionalSearch());
-        ResponseFormatter.getInstance().format(agent, agent.solve(true));
-        agent.configure(robotProblem, new AStar());
-        ResponseFormatter.getInstance().format(agent, agent.solve(true));
+//        agent.configure(robotProblem, new UnlimitedDFS());
+//        ResponseFormatter.getInstance().format(agent, agent.solve(true));
+//        agent.configure(robotProblem, new BidirectionalSearch());
+//        ResponseFormatter.getInstance().format(agent, agent.solve(true));
+//        agent.configure(robotProblem, new AStar());
+//        ResponseFormatter.getInstance().format(agent, agent.solve(true));
     }
 }

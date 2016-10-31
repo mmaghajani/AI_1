@@ -33,8 +33,9 @@ public class ResponseFormatter {
             node = node.getParent();
         }
 
-        for (int i = path.size(); i >= 0; i--) {
-            System.out.println(path.get(i));
+        System.out.println("Path : ");
+        for (int i = path.size() - 1; i >= 0; i--) {
+            System.out.println(path.get(i).getState());
         }
     }
 }

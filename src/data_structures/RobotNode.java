@@ -17,4 +17,9 @@ public class RobotNode extends Node {
     public void setState(int state) {
         this.state = state;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return state == ((RobotNode)o).state ;
+    }
 }
