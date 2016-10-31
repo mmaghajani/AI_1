@@ -6,6 +6,7 @@ package data_structures;
 public class Node {
     protected int accessibilityCost ;
     protected int depth = 0 ;
+    protected Node parent = this ;
 
     public Node(){
 
