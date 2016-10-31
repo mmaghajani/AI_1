@@ -38,10 +38,10 @@ public class Main {
         verticalWall.add(9);
         verticalWall.add(15);
         Robot robotProblem = new Robot(5, 5, horizontalWall, verticalWall);
-        agent.configure(robotProblem, new UniformCostSearch());
-        ResponseFormatter.getInstance().format(agent, agent.solve(true));
-//        agent.configure(robotProblem, new UnlimitedDFS());
+//        agent.configure(robotProblem, new UniformCostSearch());
 //        ResponseFormatter.getInstance().format(agent, agent.solve(true));
+        agent.configure(robotProblem, new UnlimitedDFS());
+        ResponseFormatter.getInstance().format(agent, agent.solve(true));
 //        agent.configure(robotProblem, new BidirectionalSearch());
 //        ResponseFormatter.getInstance().format(agent, agent.solve(true));
 //        agent.configure(robotProblem, new AStar());

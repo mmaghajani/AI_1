@@ -28,8 +28,13 @@ public class IterativeDeepeningDFS extends DFS {
                     increaseNumOfExpandedNode();
                     if (node.getDepth() < limit) {
                         for (Node child : problem.nextState(node)) {
-                            if (problem.isGoal(child)) return child;
+                            if (problem.isGoal(child)){
+                                child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
+                                child.setParent(node);
+                                return child;
+                            }
                             if (!e.contains(child) && !f.contains(child) && !child.equals(node)) {
+                                child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
                                 child.setDepth(node.getDepth() + 1);
                                 child.setParent(node);
                                 increaseNumOfVisitedNode();
@@ -55,8 +60,13 @@ public class IterativeDeepeningDFS extends DFS {
                     increaseNumOfExpandedNode();
                     if (node.getDepth() < limit) {
                         for (Node child : problem.nextState(node)) {
-                            if (problem.isGoal(child)) return child;
+                            if (problem.isGoal(child)){
+                                child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
+                                child.setParent(node);
+                                return child;
+                            }
                             if (!child.equals(node)) {
+                                child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
                                 child.setDepth(node.getDepth() + 1);
                                 child.setParent(node);
                                 increaseNumOfVisitedNode();

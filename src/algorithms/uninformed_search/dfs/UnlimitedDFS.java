@@ -23,8 +23,14 @@ public class UnlimitedDFS extends DFS {
                 Node node = f.remove(0);
                 increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(node)) {
-                    if (problem.isGoal(child)) return child;
+
+                    if (problem.isGoal(child)){
+                        child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
+                        child.setParent(node);
+                        return child;
+                    }
                     if (!e.contains(child) && !f.contains(child) && !child.equals(node)) {
+                        child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
                         child.setParent(node);
                         increaseNumOfVisitedNode();
                         f.add(0, child);
@@ -43,8 +49,13 @@ public class UnlimitedDFS extends DFS {
                 Node node = f.remove(0);
                 increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(node)) {
-                    if (problem.isGoal(child)) return child;
+                    if (problem.isGoal(child)){
+                        child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
+                        child.setParent(node);
+                        return child;
+                    }
                     if (!child.equals(node)) {
+                        child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
                         child.setParent(node);
                         increaseNumOfVisitedNode();
                         f.add(0, child);
