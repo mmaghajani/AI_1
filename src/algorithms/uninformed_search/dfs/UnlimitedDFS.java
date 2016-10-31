@@ -41,6 +41,7 @@ public class UnlimitedDFS extends DFS {
 
             while (!f.isEmpty()) {
                 Node node = f.remove(0);
+                increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(node)) {
                     if (problem.isGoal(child)) return child;
                     if (!child.equals(node)) {
