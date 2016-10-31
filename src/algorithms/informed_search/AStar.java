@@ -23,6 +23,7 @@ public class AStar extends Algorithm {
                 for (Node child : problem.nextState(node)) {
                     if (!e.contains(child) && !f.contains(child) && !child.equals(node)) {
                         child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
+                        child.setParent(node);
                         f.add(child);
                     }
                     //updating node
@@ -44,6 +45,7 @@ public class AStar extends Algorithm {
                 for (Node child : problem.nextState(node)) {
                     if ( !f.contains(child) && !child.equals(node)) {
                         child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
+                        child.setParent(node);
                         f.add(child);
                     }
                     //updating node

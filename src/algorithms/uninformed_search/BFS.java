@@ -23,8 +23,10 @@ public class BFS extends Algorithm {
                 Node node = f.remove(0);
                 for (Node child : problem.nextState(node)) {
                     if (problem.isGoal(child)) return child;
-                    if (!e.contains(child) && !f.contains(child) && !child.equals(node))
+                    if (!e.contains(child) && !f.contains(child) && !child.equals(node)) {
+                        child.setParent(node);
                         f.add(child);
+                    }
                 }
                 e.add(node);
             }
@@ -38,6 +40,7 @@ public class BFS extends Algorithm {
                 Node node = f.remove(0);
                 for (Node child : problem.nextState(node)) {
                     if (problem.isGoal(child)) return child;
+                    child.setParent(node);
                     f.add(child);
                 }
             }

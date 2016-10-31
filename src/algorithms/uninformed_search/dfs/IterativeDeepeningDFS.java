@@ -30,6 +30,7 @@ public class IterativeDeepeningDFS extends DFS {
                             if (problem.isGoal(child)) return child;
                             if (!e.contains(child) && !f.contains(child) && !child.equals(node)) {
                                 child.setDepth(node.getDepth() + 1);
+                                child.setParent(node);
                                 f.add(0, child);
                             }
                         }
@@ -54,6 +55,7 @@ public class IterativeDeepeningDFS extends DFS {
                             if (problem.isGoal(child)) return child;
                             if (!child.equals(node)) {
                                 child.setDepth(node.getDepth() + 1);
+                                child.setParent(node);
                                 f.add(0, child);
                             }
                         }
