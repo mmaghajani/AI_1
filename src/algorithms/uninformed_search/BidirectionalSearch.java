@@ -30,8 +30,45 @@ public class BidirectionalSearch extends Algorithm {
                 increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(nodeInStartScope)) {
                     //if (problem.isGoal(child)) return child;
-                    if (f_goal.contains(child) || e_goal.contains(child)) return child;
+                    if (f_goal.contains(child) || e_goal.contains(child)) {
+                        child.setAccessibilityCost(nodeInStartScope.getAccessibilityCost() + problem.getCost(nodeInStartScope, child));
+                        child.setParent(nodeInStartScope);
+                        //reversing
+                        Node p = null,w = null;
+                        if( f_goal.contains(child)){
+                            for(Node node : f_goal ){
+                                if( node.equals(child)){
+                                    p = node ;
+                                    w = child ;
+                                    while(!problem.isGoal(w)){
+                                        Node q = p.getParent() ;
+                                        p.setParent(w);
+                                        w = p ;
+                                        p = q ;
+                                    }
+                                }
+                            }
+                        }
+                        else if( e_goal.contains(child)){
+                            for(Node node : e_goal ){
+                                if( node.equals(child)){
+                                    p = node ;
+                                    w = child ;
+                                    while(problem.isGoal(w)){
+                                        Node q = p.getParent() ;
+                                        p.setParent(w);
+                                        q.setParent(p);
+                                        w = p ;
+                                        p = q ;
+                                    }
+                                }
+                            }
+                        }
+
+                        return w;
+                    }
                     if (!e.contains(child) && !f.contains(child) && !child.equals(nodeInStartScope)) {
+                        child.setAccessibilityCost(nodeInStartScope.getAccessibilityCost() + problem.getCost(nodeInStartScope, child));
                         child.setParent(nodeInStartScope);
                         increaseNumOfVisitedNode();
                         f.add(child);
@@ -43,8 +80,45 @@ public class BidirectionalSearch extends Algorithm {
                 increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(nodeInGoalScope)) {
                     //if (problem.isGoal(child)) return child;
-                    if (f.contains(child) || e.contains(child)) return child;
+                    if (f.contains(child) || e.contains(child)) {
+                        child.setAccessibilityCost(nodeInGoalScope.getAccessibilityCost() + problem.getCost(nodeInGoalScope, child));
+                        child.setParent(nodeInGoalScope);
+                        //reversing
+                        Node p = null,w = null;
+                        if( f.contains(child)){
+                            for(Node node : f ){
+                                if( node.equals(child)){
+                                    p = child ;
+                                    w = node ;
+                                    while(!problem.isGoal(w)){
+                                        Node q = p.getParent() ;
+                                        p.setParent(w);
+                                        w = p ;
+                                        p = q ;
+                                    }
+                                }
+                            }
+                        }
+                        else if( e.contains(child)){
+                            for(Node node : e ){
+                                if( node.equals(child)){
+                                    p = child ;
+                                    w = node ;
+                                    while(problem.isGoal(w)){
+                                        Node q = p.getParent() ;
+                                        p.setParent(w);
+                                        q.setParent(p);
+                                        w = p ;
+                                        p = q ;
+                                    }
+                                }
+                            }
+                        }
+
+                        return w;
+                    }
                     if (!e_goal.contains(child) && !f_goal.contains(child) && !child.equals(nodeInGoalScope)) {
+                        child.setAccessibilityCost(nodeInGoalScope.getAccessibilityCost() + problem.getCost(nodeInGoalScope, child));
                         child.setParent(nodeInGoalScope);
                         increaseNumOfVisitedNode();
                         f_goal.add(child);
@@ -66,7 +140,11 @@ public class BidirectionalSearch extends Algorithm {
                 increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(nodeInStartScope)) {
                     //if (problem.isGoal(child)) return child;
-                    if (f_goal.contains(child)) return child;
+                    if (f_goal.contains(child)) {
+                        child.setAccessibilityCost(nodeInStartScope.getAccessibilityCost() + problem.getCost(nodeInStartScope, child));
+                        child.setParent(nodeInStartScope);
+                        return child;
+                    }
                     if (!child.equals(nodeInStartScope)) {
                         child.setParent(nodeInStartScope);
                         increaseNumOfVisitedNode();
@@ -76,8 +154,13 @@ public class BidirectionalSearch extends Algorithm {
                 Node nodeInGoalScope = f_goal.remove(0);
                 for (Node child : problem.nextState(nodeInGoalScope)) {
                     //if (problem.isGoal(child)) return child;
-                    if (f.contains(child)) return child;
+                    if (f.contains(child)) {
+                        child.setAccessibilityCost(nodeInGoalScope.getAccessibilityCost() + problem.getCost(nodeInGoalScope, child));
+                        child.setParent(nodeInStartScope);
+                        return child;
+                    }
                     if (!child.equals(nodeInGoalScope)) {
+                        child.setAccessibilityCost(nodeInGoalScope.getAccessibilityCost() + problem.getCost(nodeInGoalScope, child));
                         child.setParent(nodeInGoalScope);
                         increaseNumOfVisitedNode();
                         f_goal.add(child);
