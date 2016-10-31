@@ -35,8 +35,8 @@ public class Main {
         horizontalWall.add(16);
         horizontalWall.add(17);
         ArrayList<Integer> verticalWall = new ArrayList<>();
-        horizontalWall.add(9);
-        horizontalWall.add(15);
+        verticalWall.add(9);
+        verticalWall.add(15);
         Robot robotProblem = new Robot(5, 5, horizontalWall, verticalWall);
         agent.configure(robotProblem, new UniformCostSearch());
         ResponseFormatter.getInstance().format(agent, agent.solve(true));
