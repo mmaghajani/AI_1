@@ -34,37 +34,38 @@ public class BidirectionalSearch extends Algorithm {
                         child.setAccessibilityCost(nodeInStartScope.getAccessibilityCost() + problem.getCost(nodeInStartScope, child));
                         child.setParent(nodeInStartScope);
                         //reversing
-                        Node p = null,w = null;
-                        if( f_goal.contains(child)){
-                            for(Node node : f_goal ){
-                                if( node.equals(child)){
-                                    p = node ;
-                                    w = child ;
-                                    while(!problem.isGoal(w)){
-                                        Node q = p.getParent() ;
+                        Node p = null, w = null;
+                        int tempCost = 0;
+                        if (f_goal.contains(child)) {
+                            for (Node node : f_goal) {
+                                if (node.equals(child)) {
+                                    tempCost = node.getAccessibilityCost() + child.getAccessibilityCost();
+                                    p = node;
+                                    w = child;
+                                    while (!problem.isGoal(w)) {
+                                        Node q = p.getParent();
                                         p.setParent(w);
-                                        w = p ;
-                                        p = q ;
+                                        w = p;
+                                        p = q;
                                     }
                                 }
                             }
-                        }
-                        else if( e_goal.contains(child)){
-                            for(Node node : e_goal ){
-                                if( node.equals(child)){
-                                    p = node ;
-                                    w = child ;
-                                    while(problem.isGoal(w)){
-                                        Node q = p.getParent() ;
+                        } else if (e_goal.contains(child)) {
+                            for (Node node : e_goal) {
+                                if (node.equals(child)) {
+                                    p = node;
+                                    w = child;
+                                    while (problem.isGoal(w)) {
+                                        Node q = p.getParent();
                                         p.setParent(w);
                                         q.setParent(p);
-                                        w = p ;
-                                        p = q ;
+                                        w = p;
+                                        p = q;
                                     }
                                 }
                             }
                         }
-
+                        w.setAccessibilityCost(tempCost);
                         return w;
                     }
                     if (!e.contains(child) && !f.contains(child) && !child.equals(nodeInStartScope)) {
@@ -84,37 +85,38 @@ public class BidirectionalSearch extends Algorithm {
                         child.setAccessibilityCost(nodeInGoalScope.getAccessibilityCost() + problem.getCost(nodeInGoalScope, child));
                         child.setParent(nodeInGoalScope);
                         //reversing
-                        Node p = null,w = null;
-                        if( f.contains(child)){
-                            for(Node node : f ){
-                                if( node.equals(child)){
-                                    p = child ;
-                                    w = node ;
-                                    while(!problem.isGoal(w)){
-                                        Node q = p.getParent() ;
+                        Node p = null, w = null;
+                        int tempCost = 0;
+                        if (f.contains(child)) {
+                            for (Node node : f) {
+                                if (node.equals(child)) {
+                                    p = child;
+                                    w = node;
+                                    tempCost = node.getAccessibilityCost() + child.getAccessibilityCost();
+                                    while (!problem.isGoal(w)) {
+                                        Node q = p.getParent();
                                         p.setParent(w);
-                                        w = p ;
-                                        p = q ;
+                                        w = p;
+                                        p = q;
                                     }
                                 }
                             }
-                        }
-                        else if( e.contains(child)){
-                            for(Node node : e ){
-                                if( node.equals(child)){
-                                    p = child ;
-                                    w = node ;
-                                    while(problem.isGoal(w)){
-                                        Node q = p.getParent() ;
+                        } else if (e.contains(child)) {
+                            for (Node node : e) {
+                                if (node.equals(child)) {
+                                    p = child;
+                                    w = node;
+                                    while (problem.isGoal(w)) {
+                                        Node q = p.getParent();
                                         p.setParent(w);
                                         q.setParent(p);
-                                        w = p ;
-                                        p = q ;
+                                        w = p;
+                                        p = q;
                                     }
                                 }
                             }
                         }
-
+                        w.setAccessibilityCost(tempCost);
                         return w;
                     }
                     if (!e_goal.contains(child) && !f_goal.contains(child) && !child.equals(nodeInGoalScope)) {
@@ -143,7 +145,26 @@ public class BidirectionalSearch extends Algorithm {
                     if (f_goal.contains(child)) {
                         child.setAccessibilityCost(nodeInStartScope.getAccessibilityCost() + problem.getCost(nodeInStartScope, child));
                         child.setParent(nodeInStartScope);
-                        return child;
+                        //reversing
+                        Node p = null, w = null;
+                        int tempCost = 0;
+                        if (f_goal.contains(child)) {
+                            for (Node node : f_goal) {
+                                if (node.equals(child)) {
+                                    p = node;
+                                    w = child;
+                                    tempCost = node.getAccessibilityCost() + child.getAccessibilityCost();
+                                    while (!problem.isGoal(w)) {
+                                        Node q = p.getParent();
+                                        p.setParent(w);
+                                        w = p;
+                                        p = q;
+                                    }
+                                }
+                            }
+                        }
+                        w.setAccessibilityCost(tempCost);
+                        return w;
                     }
                     if (!child.equals(nodeInStartScope)) {
                         child.setParent(nodeInStartScope);
@@ -157,7 +178,26 @@ public class BidirectionalSearch extends Algorithm {
                     if (f.contains(child)) {
                         child.setAccessibilityCost(nodeInGoalScope.getAccessibilityCost() + problem.getCost(nodeInGoalScope, child));
                         child.setParent(nodeInStartScope);
-                        return child;
+                        //reversing
+                        Node p = null, w = null;
+                        int tempCost = 0;
+                        if (f.contains(child)) {
+                            for (Node node : f) {
+                                if (node.equals(child)) {
+                                    p = child;
+                                    w = node;
+                                    tempCost = node.getAccessibilityCost() + child.getAccessibilityCost();
+                                    while (!problem.isGoal(w)) {
+                                        Node q = p.getParent();
+                                        p.setParent(w);
+                                        w = p;
+                                        p = q;
+                                    }
+                                }
+                            }
+                        }
+                        w.setAccessibilityCost(tempCost);
+                        return w;
                     }
                     if (!child.equals(nodeInGoalScope)) {
                         child.setAccessibilityCost(nodeInGoalScope.getAccessibilityCost() + problem.getCost(nodeInGoalScope, child));
