@@ -22,4 +22,9 @@ public class RobotNode extends Node {
     public boolean equals(Object o) {
         return state == ((RobotNode)o).state ;
     }
+
+    @Override
+    public String toString() {
+        return "[" + state + "]";
+    }
 }

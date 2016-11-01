@@ -1,5 +1,6 @@
 import algorithms.Algorithm;
 import data_structures.Node;
+import data_structures.QueensNode;
 import problems.Problem;
 
 import java.util.ArrayList;
@@ -35,7 +36,12 @@ public class ResponseFormatter {
 
         System.out.println("Path : ");
         for (int i = path.size() - 1; i >= 0; i--) {
-            System.out.println(path.get(i).getState());
+//            if( path.get(i) instanceof QueensNode ){
+//                QueensNode q = (QueensNode) path.get(i);
+//                int[] state = (int[]) q.getState();
+//                System.out.println(path.get(i).getState()) ;
+//            }
+            System.out.println(path.get(i));
         }
     }
 }
