@@ -15,10 +15,10 @@ public class AStar extends Algorithm {
         if (isGraphy) {
             f = new ArrayList<>();
             e = new ArrayList<>();
+            f.add(problem.getInitialState());
 
             while (!f.isEmpty()) {
                 Node node = getMinimumCost(problem);
-                increaseNumOfExpandedNode();
                 if (problem.isGoal(node)) return node;
 
                 for (Node child : problem.nextState(node)) {
@@ -35,11 +35,13 @@ public class AStar extends Algorithm {
                             f.get(f.indexOf(child)).setAccessibilityCost(newCost);
                     }
                 }
+                increaseNumOfExpandedNode();
                 e.add(node);
             }
         } else {
             f = new ArrayList<>();
 
+            f.add(problem.getInitialState());
             while (!f.isEmpty()) {
                 Node node = getMinimumCost(problem);
                 increaseNumOfExpandedNode();
