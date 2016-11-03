@@ -89,21 +89,12 @@ public class Queens extends Problem {
         for (int i = 0; i < 8; i++)
             mark[i] = 0;
         for (int i = 0; i < 8; i++) {
-            if (mark[state[i]] != 0)
-                counter++ ;
-            else
-                mark[state[i]] = 1;
+            mark[state[i]] = 1;
         }
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = i + 1; j < 8; j++) {
-                if (state[j] == state[i] - (j - i) || state[j] == state[i] + (j - i))
-                    counter++ ;
-            }
-            for (int j = i - 1; j >= 0; j--) {
-                if (state[j] == state[i] - (i - j) || state[j] == state[i] + (i - j))
-                    counter++ ;
-            }
+        for( int i = 0 ; i < 8 ; i++ ){
+            if( mark[i] == 0 )
+                counter++ ;
         }
         return counter;
     }

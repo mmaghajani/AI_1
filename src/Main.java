@@ -27,7 +27,7 @@ public class Main {
 //        agent.configure(queensProblem, new DepthLimitedSearch(8));
 //        ResponseFormatter.getInstance().format(agent, agent.solve(true));
         agent.configure(queensProblem, new AStar());
-        ResponseFormatter.getInstance().format(agent, agent.solve(true));
+        ResponseFormatter.getInstance().format(agent, agent.solve(false));
     }
 
     private static void configRobotProblem(ProblemSolvingAgent agent) {
