@@ -73,6 +73,8 @@ public class BidirectionalSearch extends Algorithm {
                         child.setParent(nodeInStartScope);
                         increaseNumOfVisitedNode();
                         f.add(child);
+                        if( getMaxUsedMemory() < f.size() )
+                            setMaxUsedMemory(f.size());
                     }
                 }
                 e.add(nodeInStartScope);
@@ -124,11 +126,14 @@ public class BidirectionalSearch extends Algorithm {
                         child.setParent(nodeInGoalScope);
                         increaseNumOfVisitedNode();
                         f_goal.add(child);
+                        if( getMaxUsedMemory() < f_goal.size() )
+                            setMaxUsedMemory(f_goal.size());
                     }
                 }
                 e_goal.add(nodeInGoalScope);
 
             }
+            setMaxUsedMemory((int) (getNumOfExpandedNode() * 1.5));
         } else {
             f = new ArrayList<>();
             f_goal = new ArrayList<>();
@@ -170,6 +175,8 @@ public class BidirectionalSearch extends Algorithm {
                         child.setParent(nodeInStartScope);
                         increaseNumOfVisitedNode();
                         f.add(child);
+                        if( getMaxUsedMemory() < f.size() )
+                            setMaxUsedMemory(f.size());
                     }
                 }
                 Node nodeInGoalScope = f_goal.remove(0);
@@ -204,9 +211,12 @@ public class BidirectionalSearch extends Algorithm {
                         child.setParent(nodeInGoalScope);
                         increaseNumOfVisitedNode();
                         f_goal.add(child);
+                        if( getMaxUsedMemory() < f.size() )
+                            setMaxUsedMemory(f.size());
                     }
                 }
             }
+            setMaxUsedMemory((int) (getNumOfExpandedNode()*1.5));
         }
         return null;
     }

@@ -39,6 +39,8 @@ public class IterativeDeepeningDFS extends DFS {
                                 child.setParent(node);
                                 increaseNumOfVisitedNode();
                                 f.add(0, child);
+                                if( getMaxUsedMemory() < f.size() )
+                                    setMaxUsedMemory(f.size());
                             }
                         }
                         e.add(node);
@@ -71,6 +73,8 @@ public class IterativeDeepeningDFS extends DFS {
                                 child.setParent(node);
                                 increaseNumOfVisitedNode();
                                 f.add(0, child);
+                                if( getMaxUsedMemory() < f.size() )
+                                    setMaxUsedMemory(f.size());
                             }
                         }
                     }

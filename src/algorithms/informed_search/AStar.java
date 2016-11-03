@@ -27,6 +27,8 @@ public class AStar extends Algorithm {
                         child.setParent(node);
                         increaseNumOfVisitedNode();
                         f.add(child);
+                        if( getMaxUsedMemory() < f.size() )
+                            setMaxUsedMemory(f.size());
                     }
                     //updating node
                     if (f.contains(child)) {
@@ -53,6 +55,8 @@ public class AStar extends Algorithm {
                         child.setParent(node);
                         increaseNumOfVisitedNode();
                         f.add(child);
+                        if( getMaxUsedMemory() < f.size() )
+                            setMaxUsedMemory(f.size());
                     }
                     //updating node
                     if (f.contains(child)) {

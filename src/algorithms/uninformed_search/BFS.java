@@ -28,6 +28,8 @@ public class BFS extends Algorithm {
                         child.setParent(node);
                         increaseNumOfVisitedNode();
                         f.add(child);
+                        if( getMaxUsedMemory() < f.size() )
+                            setMaxUsedMemory(f.size());
                     }
                 }
                 e.add(node);
@@ -46,6 +48,8 @@ public class BFS extends Algorithm {
                     child.setParent(node);
                     increaseNumOfVisitedNode();
                     f.add(child);
+                    if( getMaxUsedMemory() < f.size() )
+                        setMaxUsedMemory(f.size());
                 }
             }
         }
