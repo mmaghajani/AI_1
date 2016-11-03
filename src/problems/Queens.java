@@ -20,7 +20,7 @@ public class Queens extends Problem {
         state[3] = 2 ;
         state[4] = 5 ;
         state[5] = 1 ;
-        state[6] = 4 ;
+        state[6] = 5 ;
         state[7] = 0 ;
         QueensNode node = new QueensNode(state);
         return node;

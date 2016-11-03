@@ -23,11 +23,11 @@ public class Main {
     private static void configQueensProblem(ProblemSolvingAgent agent) {
         Queens queensProblem = new Queens();
         agent.configure(queensProblem, new BFS());
-//        ResponseFormatter.getInstance().format(agent, agent.solve(false));
+        ResponseFormatter.getInstance().format(agent, agent.solve(false));
 //        agent.configure(queensProblem, new DepthLimitedSearch(8));
 //        ResponseFormatter.getInstance().format(agent, agent.solve(true));
-        agent.configure(queensProblem, new AStar());
-        ResponseFormatter.getInstance().format(agent, agent.solve(false));
+//        agent.configure(queensProblem, new AStar());
+//        ResponseFormatter.getInstance().format(agent, agent.solve(false));
     }
 
     private static void configRobotProblem(ProblemSolvingAgent agent) {

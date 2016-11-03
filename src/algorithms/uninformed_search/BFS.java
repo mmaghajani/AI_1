@@ -23,12 +23,18 @@ public class BFS extends Algorithm {
                 Node node = f.remove(0);
                 increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(node)) {
-                    if (problem.isGoal(child)) return child;
+                    if (problem.isGoal(child)) {
+                        child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
+                        child.setParent(node);
+                        increaseNumOfVisitedNode();
+                        return child;
+                    }
                     if (!e.contains(child) && !f.contains(child) && !child.equals(node)) {
+                        child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
                         child.setParent(node);
                         increaseNumOfVisitedNode();
                         f.add(child);
-                        if( getMaxUsedMemory() < f.size() )
+                        if (getMaxUsedMemory() < f.size())
                             setMaxUsedMemory(f.size());
                     }
                 }
@@ -44,11 +50,17 @@ public class BFS extends Algorithm {
                 Node node = f.remove(0);
                 increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(node)) {
-                    if (problem.isGoal(child)) return child;
+                    if (problem.isGoal(child)) {
+                        child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
+                        child.setParent(node);
+                        increaseNumOfVisitedNode();
+                        return child;
+                    }
+                    child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
                     child.setParent(node);
                     increaseNumOfVisitedNode();
                     f.add(child);
-                    if( getMaxUsedMemory() < f.size() )
+                    if (getMaxUsedMemory() < f.size())
                         setMaxUsedMemory(f.size());
                 }
             }
