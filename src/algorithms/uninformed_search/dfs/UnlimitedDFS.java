@@ -21,7 +21,6 @@ public class UnlimitedDFS extends DFS {
 
             while (!f.isEmpty()) {
                 Node node = f.remove(0);
-                increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(node)) {
 
                     if (problem.isGoal(child)){
@@ -38,6 +37,7 @@ public class UnlimitedDFS extends DFS {
                             setMaxUsedMemory(f.size());
                     }
                 }
+                increaseNumOfExpandedNode();
                 e.add(node);
             }
         } else {
@@ -49,7 +49,6 @@ public class UnlimitedDFS extends DFS {
 
             while (!f.isEmpty()) {
                 Node node = f.remove(0);
-                increaseNumOfExpandedNode();
                 for (Node child : problem.nextState(node)) {
                     if (problem.isGoal(child)){
                         child.setAccessibilityCost(node.getAccessibilityCost() + problem.getCost(node, child));
@@ -65,6 +64,7 @@ public class UnlimitedDFS extends DFS {
                             setMaxUsedMemory(f.size());
                     }
                 }
+                increaseNumOfExpandedNode();
             }
         }
         return null;
