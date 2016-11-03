@@ -16,18 +16,18 @@ import java.util.Collection;
 public class Main {
     public static void main(String[] args) {
         ProblemSolvingAgent agent = new ProblemSolvingAgent();
-        //configRobotProblem(agent);
+        configRobotProblem(agent);
         configQueensProblem(agent);
     }
 
     private static void configQueensProblem(ProblemSolvingAgent agent) {
         Queens queensProblem = new Queens();
-//        agent.configure(queensProblem, new BFS());
-//        ResponseFormatter.getInstance().format(agent, agent.solve(false));
+        agent.configure(queensProblem, new BFS());
+        ResponseFormatter.getInstance().format(agent, agent.solve(false));
         agent.configure(queensProblem, new DepthLimitedSearch(8));
         ResponseFormatter.getInstance().format(agent, agent.solve(true));
-//        agent.configure(queensProblem, new AStar());
-//        ResponseFormatter.getInstance().format(agent, agent.solve(true));
+        agent.configure(queensProblem, new AStar());
+        ResponseFormatter.getInstance().format(agent, agent.solve(true));
     }
 
     private static void configRobotProblem(ProblemSolvingAgent agent) {
